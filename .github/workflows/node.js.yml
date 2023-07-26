@@ -22,7 +22,7 @@ jobs:
     - run: npm install
     - run: npm install -D @playwright/test
     - run: npm run build --if-present
-   # - run: node server/server.js
+    - run: npx playwright install 
     - run: npx playwright test tests/ui.test.js
     
     
