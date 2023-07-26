@@ -22,9 +22,16 @@ jobs:
     - run: npm install
     - run: npm install -D @playwright/test
     - run: npm run build --if-present
-    - run: npx playwright install 
-    - run: npm run start
+    - run: npx playwright install
+    
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Test
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
    # - run: node server/server.js 
     - run: npx playwright test tests/ui.test.js
-    
-    
